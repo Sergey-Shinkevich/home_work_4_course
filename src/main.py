@@ -1,5 +1,6 @@
 from src.category import Category
 from src.product import Product
+from src.utils import create_objects, load_json
 
 if __name__ == "__main__":
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
@@ -47,3 +48,14 @@ if __name__ == "__main__":
 
     print(Category.category_count)
     print(Category.product_count)
+
+    data = load_json("../data/products.json")
+    a = create_objects(data)
+    print(a[0].name)
+    print(a[0].description)
+    for item in a[0].products:
+        print(f"{item.name}. {item.description}. {item.price}")
+    print(a[1].name)
+    print(a[1].description)
+    for item in a[1].products:
+        print(f"{item.name}. {item.description}. {item.price}")
