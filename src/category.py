@@ -3,6 +3,7 @@ from src.product import Product
 
 class Category:
     """Объявление класса Category"""
+
     category_count = 0
     product_count = 0
     name: str
@@ -17,7 +18,6 @@ class Category:
         Category.product_count += len(self.__products)
         Category.category_count += 1
 
-
     def add_product(self, item: Product) -> None:
         """Метод добавления нового Product в Category"""
         self.__products.append(item)
@@ -30,5 +30,3 @@ class Category:
         for product in self.__products:
             result += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
         return result
-
-

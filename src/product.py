@@ -14,16 +14,14 @@ class Product:
         self.quantity = quantity
 
     @classmethod
-    def new_product(cls, data: dict) -> 'Product':
+    def new_product(cls, data: dict) -> "Product":
         """Метод создания экземпляров класса"""
         return cls(**data)
-
 
     @property
     def price(self) -> float:
         """Геттер атрибута price"""
         return self.__price
-
 
     @price.setter
     def price(self, new_price: float) -> None:
@@ -32,7 +30,3 @@ class Product:
             print("Цена не должна быть нулевая или отрицательная")
         else:
             self.__price = new_price
-
-
-
-
