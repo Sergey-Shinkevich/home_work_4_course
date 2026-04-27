@@ -31,14 +31,14 @@ ____
 Name                     Stmts   Miss  Cover
 --------------------------------------------
 src\__init__.py              0      0   100%
-src\category.py             10      0   100%
-src\product.py               6      0   100%
+src\category.py             19      0   100%
+src\product.py              17      0   100%
 src\utils.py                19      8    58%
 tests\__init__.py            0      0   100%
 tests\conftest.py            5      0   100%
-tests\test_category.py      17      0   100%
-tests\test_product.py        6      0   100%
+tests\test_category.py      30      0   100%
+tests\test_product.py       26      0   100%
 tests\test_utils.py         16      0   100%
 --------------------------------------------
-TOTAL                       79      8    90%
+TOTAL                      132      8    94%
 
