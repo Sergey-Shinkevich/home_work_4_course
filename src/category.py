@@ -18,6 +18,11 @@ class Category:
         Category.product_count += len(self.__products)
         Category.category_count += 1
 
+    def __str__(self) -> str:
+        """Переопределение пользовательского вывода экземпляра класса"""
+        summ = sum(product.quantity for product in self.__products)
+        return f"{self.name}, количество продуктов: {summ} шт."
+
     def add_product(self, item: Product) -> None:
         """Метод добавления нового Product в Category"""
         self.__products.append(item)
