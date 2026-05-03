@@ -26,7 +26,7 @@ def test_category_products_getter() -> None:
     """Тест работы геттера products"""
     product = Product("Samsung Galaxy C23 Ultra", "256GB, Gray mirror", 180000.0, 5)
     category = Category("Smartphones", "Modern smartphones", [product])
-    expected_output = "Samsung Galaxy C23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
+    expected_output = "Samsung Galaxy C23 Ultra, 180000.0 руб. Остаток: 5 шт."
 
     assert category.products == expected_output
 

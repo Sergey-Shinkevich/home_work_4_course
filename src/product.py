@@ -27,6 +27,6 @@ class Product:
     def price(self, new_price: float) -> None:
         """Сеттер атрибута price"""
         if new_price <= 0:
-            print("Цена не должна быть нулевая или отрицательная")
+            raise ValueError("Цена не должна быть нулевая или отрицательная")
         else:
             self.__price = new_price

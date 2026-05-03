@@ -1,3 +1,5 @@
+import pytest
+
 from src.product import Product
 
 
@@ -35,8 +37,8 @@ def test_setter_price() -> None:
     expected_output.price = 500
     assert expected_output.price == 500
 
-    expected_output.price = 0
-    assert expected_output.price == 500
+    with pytest.raises(ValueError, match="Цена не должна быть нулевая или отрицательная"):
+        expected_output.price = 0
 
-    expected_output.price = -500
-    assert expected_output.price == 500
+    with pytest.raises(ValueError, match="Цена не должна быть нулевая или отрицательная"):
+        expected_output.price = -500
