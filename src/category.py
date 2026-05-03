@@ -8,12 +8,25 @@ class Category:
     product_count = 0
     name: str
     description: str
-    products: list[Product]
+    __products: list[Product]
 
-    def __init__(self, name: str, description: str, products: list[Product]) -> None:
+    def __init__(self, name: str, description: str, products: list) -> None:
         """Конструктор класса Category"""
         self.name = name
         self.description = description
-        self.products = products
+        self.__products = products
+        Category.product_count += len(self.__products)
         Category.category_count += 1
-        Category.product_count += len(self.products)
+
+    def add_product(self, item: Product) -> None:
+        """Метод добавления нового Product в Category"""
+        self.__products.append(item)
+        Category.product_count += 1
+
+    @property
+    def products(self) -> str:
+        """Геттер атрибута products"""
+        results = []
+        for product in self.__products:
+            results.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
+        return "\n".join(results)
