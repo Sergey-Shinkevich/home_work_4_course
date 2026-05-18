@@ -1,6 +1,8 @@
-# Домашняя работа по четвертому курсу. Урок 1.
+# Домашняя работа по четвертому курсу
 ____
 Тема: Разработка интернет магазина
+
+19.05.2026 Реализация подклассов Smartphone и LawnGrass. Усовершенствована функция сложения класса Categories.
 ____
 ## Установка и запуск
 
@@ -31,14 +33,14 @@ ____
 Name                     Stmts   Miss  Cover
 --------------------------------------------
 src\__init__.py              0      0   100%
-src\category.py             22      0   100%
-src\product.py              22      0   100%
+src\category.py             24      0   100%
+src\product.py              45      0   100%
 src\utils.py                19      8    58%
 tests\__init__.py            0      0   100%
 tests\conftest.py            5      0   100%
-tests\test_category.py      37      0   100%
-tests\test_product.py       35      0   100%
+tests\test_category.py      48      0   100%
+tests\test_product.py       72      0   100%
 tests\test_utils.py         16      0   100%
 --------------------------------------------
-TOTAL                      156      8    95%
+TOTAL                      229      8    97%
 
