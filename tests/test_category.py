@@ -41,3 +41,13 @@ def test_add_product() -> None:
     assert category_3.product_count == 1
     category_3.add_product(product_2)
     assert category_3.product_count == 2
+
+
+def test_str_category() -> None:
+    """Тест описания, метод __str__"""
+    product_1 = Product("Имя_1", "Описание_1", 100, 1)
+    product_2 = Product("Имя_2", "Описание_2", 102, 2)
+    category_1 = Category("Категория_1", "Описание_1", [product_1, product_2])
+    expected_output = "Категория_1, количество продуктов: 3 шт."
+    class_answer = str(category_1)
+    assert class_answer == expected_output

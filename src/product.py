@@ -13,6 +13,14 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self) -> str:
+        """Переопределение метода пользовательского вывода объекта класса"""
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other: Product) -> float:
+        result = (self.__price * self.quantity) + (other.__price * other.quantity)
+        return result
+
     @classmethod
     def new_product(cls, data: dict) -> "Product":
         """Метод создания экземпляров класса"""
