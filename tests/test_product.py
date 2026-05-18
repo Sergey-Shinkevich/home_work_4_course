@@ -1,6 +1,6 @@
 import pytest
 
-from src.product import Product, Smartphone, LawnGrass
+from src.product import LawnGrass, Product, Smartphone
 
 
 def test_product_init(test_product_1: Product) -> None:
@@ -57,6 +57,7 @@ def test_magic_add_method() -> None:
     expected_output = 2580000
     assert product1 + product2 == expected_output
 
+
 def test_init_class_smartphones() -> None:
     """Тест инициализации подкласса Smartphones"""
     smartphone_1 = Smartphone("Iphone 15", "512GB, Gray space", 210000.0, 8, 98.2, "15", 512, "Gray space")
@@ -70,6 +71,7 @@ def test_init_class_smartphones() -> None:
     assert smartphone_1.memory == 512
     assert smartphone_1.color == "Gray space"
 
+
 def test_init_class_LawnGrass() -> None:
     """Тест инициализации подкласса LawnGrass"""
     grass_1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
@@ -82,22 +84,27 @@ def test_init_class_LawnGrass() -> None:
     assert grass_1.germination_period == "7 дней"
     assert grass_1.color == "Зеленый"
 
+
 def test_add_smartphones_normal() -> None:
     """Тест метод сложения объектов класса Smartphones"""
-    smartphone1 = Smartphone("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5,
-                            "S23 Ultra", 256, "Серый")
+    smartphone1 = Smartphone(
+        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
+    )
     smartphone2 = Smartphone("Iphone 15", "512GB, Gray space", 210000.0, 8, 98.2, "15", 512, "Gray space")
 
     result = smartphone1 + smartphone2
 
     assert result == 2580000
 
+
 def test_add_smartphones_error() -> None:
     """Тест стрессоустойчивости метода сложения объектов класса Smartphones"""
-    smartphone1 = Smartphone("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5,
-                             "S23 Ultra", 256, "Серый")
+    smartphone1 = Smartphone(
+        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
+    )
     with pytest.raises(TypeError):
-        result = smartphone1 + 1
+        print(smartphone1 + 1)
+
 
 def test_add_LawnGrass_normal() -> None:
     """Тест метод сложения объектов класса LawnGrass"""
@@ -108,9 +115,9 @@ def test_add_LawnGrass_normal() -> None:
 
     assert result == 16750
 
+
 def test_add_LawnGrass_error() -> None:
     """Тест стрессоустойчивости метода сложения объектов класса LawnGrass"""
     grass1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
     with pytest.raises(TypeError):
-        result = grass1 + 1
-
+        print(grass1 + 1)

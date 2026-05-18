@@ -1,7 +1,7 @@
 import pytest
 
 from src.category import Category
-from src.product import Product, Smartphone, LawnGrass
+from src.product import Product, Smartphone
 
 
 def test_category() -> None:
@@ -62,6 +62,7 @@ def test_add_product_error() -> None:
 
     with pytest.raises(TypeError):
         category.add_product(42)
+
 
 def test_str_category() -> None:
     """Тест описания, метод __str__"""

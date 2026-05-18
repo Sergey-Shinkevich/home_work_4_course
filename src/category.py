@@ -37,6 +37,3 @@ class Category:
         for product in self.__products:
             results.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
         return "\n".join(results)
-
-
-
