@@ -25,9 +25,13 @@ class BaseProduct(ABC):
 
 
 class MixinREPR:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        print(repr(self))
 
-    def __repr__(self, name: str, description: str, price: float | int, quantity: int) -> None:
-        print(f"{self.__class__.__name__}('{self.name}', '{self.description}', '{self.price}', '{self.quantity}')")
+
+    def __repr__(self) -> None:
+        return f"{self.__class__.__name__}('{self.name}', '{self.description}', '{self.price}', '{self.quantity}')"
 
 
 class Product(MixinREPR, BaseProduct):
@@ -44,7 +48,7 @@ class Product(MixinREPR, BaseProduct):
         self.description = description
         self.__price = price
         self.quantity = quantity
-        super().__repr__(name, description, price, quantity)
+        super().__init__()
 
     def __str__(self) -> str:
         """Переопределение метода пользовательского вывода объекта класса"""
@@ -128,3 +132,5 @@ class LawnGrass(Product):
         else:
             raise TypeError
         return result
+
+
