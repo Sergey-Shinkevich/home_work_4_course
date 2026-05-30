@@ -1,5 +1,7 @@
+import pytest
+
 from src.category import Category
-from src.product import Product
+from src.product import Product, Smartphone
 
 
 def test_category() -> None:
@@ -35,12 +37,31 @@ def test_add_product() -> None:
     """Тест метода добавления продукта в категории"""
     Category.category_count = 0
     Category.product_count = 0
+
     product_1 = Product("Samsung Galaxy C23 Ultra", "256GB, Gray mirror", 180000.0, 5)
     product_2 = Product("Iphone", "Modern smartphone", 200000, 10)
+    smartphone = Smartphone("iPhone 15", "512GB", 150000.0, 3, 2.5, "15 Pro", 128, "Titanium")
+
     category_3 = Category("Smartphones", "Modern smartphones", [product_1])
-    assert category_3.product_count == 1
+    assert Category.product_count == 1
+
     category_3.add_product(product_2)
-    assert category_3.product_count == 2
+    assert Category.product_count == 2
+
+    category_3.add_product(smartphone)
+    assert Category.product_count == 3
+
+
+def test_add_product_error() -> None:
+    """Тест, что метод add_product вызывает TypeError при добавлении некорректного типа"""
+    product_1 = Product("Samsung Galaxy C23 Ultra", "256GB, Gray mirror", 180000.0, 5)
+    category = Category("Smartphones", "Modern smartphones", [product_1])
+
+    with pytest.raises(TypeError):
+        category.add_product("Не продукт")
+
+    with pytest.raises(TypeError):
+        category.add_product(42)
 
 
 def test_str_category() -> None:
