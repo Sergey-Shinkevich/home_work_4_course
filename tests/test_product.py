@@ -123,7 +123,7 @@ def test_add_LawnGrass_error() -> None:
         print(grass1 + 1)
 
 
-def test_mixin_repr_output(capsys):
+def test_mixin_repr_output(capsys) -> None:
     """Тест проверяет, выводит ли миксин строку при создании объекта"""
 
     class TestProduct(CreateLogMixin):
@@ -133,6 +133,9 @@ def test_mixin_repr_output(capsys):
             self.price = price
             self.quantity = quantity
             super().__init__()
+
     TestProduct("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
     captured = capsys.readouterr()
-    assert "TestProduct('Samsung Galaxy S23 Ultra', '256GB, Серый цвет, 200MP камера', '180000.0', '5')" in captured.out
+    assert (
+        "TestProduct('Samsung Galaxy S23 Ultra', '256GB, Серый цвет, 200MP камера', '180000.0', '5')" in captured.out
+    )
