@@ -1,6 +1,6 @@
 import pytest
 
-from src.product import LawnGrass, Product, Smartphone
+from src.product import LawnGrass, Product, Smartphone, CreateLogMixin
 
 
 def test_product_init(test_product_1: Product) -> None:
@@ -121,3 +121,18 @@ def test_add_LawnGrass_error() -> None:
     grass1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
     with pytest.raises(TypeError):
         print(grass1 + 1)
+
+
+def test_mixin_repr_output(capsys):
+    """Тест проверяет, выводит ли миксин строку при создании объекта"""
+
+    class TestProduct(CreateLogMixin):
+        def __init__(self, name, description, price, quantity):
+            self.name = name
+            self.description = description
+            self.price = price
+            self.quantity = quantity
+            super().__init__()
+    TestProduct("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+    captured = capsys.readouterr()
+    assert "TestProduct('Samsung Galaxy S23 Ultra', '256GB, Серый цвет, 200MP камера', '180000.0', '5')" in captured.out
