@@ -1,4 +1,39 @@
-class Product:
+from abc import ABC, abstractmethod
+from typing import Any
+
+
+class BaseProduct(ABC):
+    """Объявление абстрактного класса продукта"""
+
+    @abstractmethod
+    def __add__(self, another: Any) -> float:
+        pass
+
+    @abstractmethod
+    def __str__(self) -> str:
+        pass
+
+    @classmethod
+    @abstractmethod
+    def new_product(cls, data: dict) -> Any:
+        pass
+
+    @property
+    @abstractmethod
+    def price(self) -> float:
+        pass
+
+
+class MixinREPR:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        print(repr(self))
+
+    def __repr__(self) -> None:
+        return f"{self.__class__.__name__}('{self.name}', '{self.description}', '{self.price}', '{self.quantity}')"
+
+
+class Product(MixinREPR, BaseProduct):
     """Объявление класса продукта"""
 
     name: str
@@ -12,12 +47,13 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     def __str__(self) -> str:
         """Переопределение метода пользовательского вывода объекта класса"""
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other: Product) -> float:
+    def __add__(self, other: Any) -> float:
         """Метод сложения"""
         result = (self.__price * self.quantity) + (other.__price * other.quantity)
         return result
