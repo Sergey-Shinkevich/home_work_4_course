@@ -37,3 +37,11 @@ class Category:
         for product in self.__products:
             results.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
         return "\n".join(results)
+
+    def middle_price(self) -> float:
+        """Подсчитывает среднюю цену товара в категории"""
+        try:
+            result = sum(product.price for product in self.__products) / len(self.__products)
+        except ZeroDivisionError:
+            result = 0
+        return result
