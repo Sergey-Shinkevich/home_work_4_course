@@ -43,6 +43,8 @@ class Product(MixinREPR, BaseProduct):
 
     def __init__(self, name: str, description: str, price: float, quantity: int) -> None:
         """Конструктор класса Product"""
+        if quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
         self.name = name
         self.description = description
         self.__price = price
@@ -53,7 +55,7 @@ class Product(MixinREPR, BaseProduct):
         """Переопределение метода пользовательского вывода объекта класса"""
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other: Any) -> float:
+    def __add__(self, other: Any) -> Any:
         """Метод сложения"""
         result = (self.__price * self.quantity) + (other.__price * other.quantity)
         return result

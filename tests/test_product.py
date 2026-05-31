@@ -137,3 +137,9 @@ def test_mixin_repr_output(capsys) -> None:
     TestProduct("Samsung", "Desc", 100.0, 5)
     captured = capsys.readouterr()
     assert "TestProduct" in captured.out
+
+
+def test_product_quantity_zero():
+    """Тест создания продукта с количеством 0"""
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        Product("Samsung", "Desc", 100.0, 0)
