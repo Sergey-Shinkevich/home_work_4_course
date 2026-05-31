@@ -53,7 +53,7 @@ class Product(MixinREPR, BaseProduct):
         """Переопределение метода пользовательского вывода объекта класса"""
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other: Product) -> float:
+    def __add__(self, other: Any) -> float:
         """Метод сложения"""
         result = (self.__price * self.quantity) + (other.__price * other.quantity)
         return result
